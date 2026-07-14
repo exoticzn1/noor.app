@@ -1,0 +1,8 @@
+{
+  "name": "Noor Islamic Companion",
+  "short_name": "Noor",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#071713",
+  "theme_color": "#071713"
+}

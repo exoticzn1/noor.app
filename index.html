@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071b17">
+<title>Noor — Islamic Companion</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="assets/style.css?v=7">
+</head>
+<body>
+<div id="fatal" class="fatal hidden"><div><h2>Noor could not start</h2><p id="fatalText"></p><button onclick="location.reload()">Reload</button></div></div>
+
+<section id="onboarding" class="onboarding">
+  <div class="onboard-shell">
+    <header class="onboard-head">
+      <div class="brand"><span class="brandmark">ن</span><span><b>Noor</b><small>Islamic Companion</small></span></div>
+      <div class="steps"><i class="active"></i><i></i><i></i><i></i></div>
+    </header>
+
+    <div class="stage active" data-stage="language">
+      <div class="stage-copy"><span class="eyebrow">Welcome to Noor</span><h1>Choose your language.</h1><p>The complete app will use this language. Noor will prepare it before you continue.</p></div>
+      <div class="stage-card">
+        <div class="search"><span>⌕</span><input id="langSearch" placeholder="Search languages"></div>
+        <div id="langGrid" class="lang-grid"></div>
+        <div id="langStatus" class="statusline">Select a language</div>
+        <button id="langContinue" class="primary" disabled>Continue</button>
+      </div>
+    </div>
+
+    <div class="stage" data-stage="profile">
+      <div class="stage-copy"><button class="back" data-back="language">← Back</button><span class="eyebrow" data-k="profile">Profile</span><h1 data-k="tellUs">Tell us about you.</h1><p data-k="privateTracking">This keeps your private prayer tracker relevant to you.</p></div>
+      <div class="stage-card profile-grid">
+        <button data-gender="male"><span>♂</span><b data-k="male">Male</b></button>
+        <button data-gender="female"><span>♀</span><b data-k="female">Female</b></button>
+      </div>
+    </div>
+
+    <div class="stage" data-stage="country">
+      <div class="stage-copy"><button class="back" data-back="profile">← <span data-k="back">Back</span></button><span class="eyebrow" data-k="location">Location</span><h1 data-k="chooseCountry">Choose your country.</h1><p data-k="countryHelp">Country names appear in your selected language and English.</p></div>
+      <div class="stage-card">
+        <div class="search"><span>⌕</span><input id="countrySearch" data-ph="searchCountry" placeholder="Search every country"></div>
+        <div id="countryGrid" class="country-grid"></div>
+      </div>
+    </div>
+
+    <div class="stage" data-stage="city">
+      <div class="stage-copy"><button class="back" data-back="country">← <span data-k="back">Back</span></button><span class="eyebrow" data-k="almostReady">Almost ready</span><h1 data-k="chooseCity">Choose your city.</h1><p data-k="cityHelp">Search for any city, town or village. Your choice stays in this browser.</p></div>
+      <div class="stage-card">
+        <div class="city-row"><div class="search"><span>⌕</span><input id="citySearch" data-ph="searchCity" placeholder="Search city"></div><button id="gps" class="secondary" data-k="useGps">Use GPS</button></div>
+        <div id="cityGrid" class="city-grid"><div class="empty" data-k="typeCity">Type at least two letters.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="app" class="app hidden">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div>
+        <div class="brand sidebrand"><span class="brandmark">ن</span><span><b>Noor</b><small data-k="companion">Islamic Companion</small></span></div>
+        <nav>
+          <button class="nav active" data-page="home"><span>⌂</span><b data-k="home">Home</b></button>
+          <button class="nav" data-page="calendar"><span>▦</span><b data-k="calendar">Calendar</b></button>
+          <button class="nav" data-page="quran"><span>☷</span><b data-k="quran">Quran</b></button>
+          <button class="nav" data-page="learn"><span>✦</span><b data-k="learn">Learn</b></button>
+          <button class="nav" data-page="duas"><span>♡</span><b data-k="duas">Duas</b></button>
+          <button class="nav" data-page="qibla"><span>⌖</span><b data-k="qibla">Qibla</b></button>
+          <button class="nav" data-page="tasbih"><span>◉</span><b data-k="tasbih">Tasbih</b></button>
+          <button class="nav" data-page="tools"><span>◇</span><b data-k="tools">Tools</b></button>
+        </nav>
+      </div>
+      <div>
+        <button class="nav" data-page="settings"><span>⚙</span><b data-k="settings">Settings</b></button>
+        <div class="privacy"><span>◈</span><div><b data-k="privateDesign">Private by design</b><small data-k="privateCopy">Your worship records stay in this browser.</small></div></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><span id="pageOver" class="eyebrow" data-k="today">Today</span><h2 id="pageTitle" data-k="home">Home</h2></div>
+        <div class="top-actions"><button id="locationBtn" class="location"><span>⌖</span><span><b id="locationName">—</b><small id="locationCountry">—</small></span></button><button id="themeBtn" class="icon">◐</button></div>
+      </header>
+
+      <section id="page-home" class="page active">
+        <article class="hero">
+          <div class="hero-art"></div>
+          <div class="hero-copy"><span class="eyebrow" data-k="salam">Assalamu alaikum</span><h1 data-k="hero">A calmer way to stay close to your worship.</h1><p id="dateLine">—</p></div>
+          <div class="next-card"><div class="next-head"><span data-k="nextPrayer">Next prayer</span><em data-k="upcoming">Upcoming</em></div><b id="nextName">—</b><strong id="nextTime">--:--</strong><div class="bar"><i id="barFill"></i></div><small id="countdown">—</small></div>
+        </article>
+
+        <div class="section-head"><div><span class="eyebrow" data-k="today">Today</span><h3 data-k="prayerTimes">Prayer times</h3></div><button id="refresh" data-k="refresh">Refresh</button></div>
+        <div id="prayerGrid" class="prayer-grid"><div class="empty wide" data-k="loading">Loading…</div></div>
+
+        <div class="home-grid">
+          <article class="panel"><div class="panel-head"><div><span class="eyebrow" data-k="yourDay">Your day</span><h3 data-k="prayerProgress">Prayer progress</h3></div><span class="panel-icon">✓</span></div><div class="progress-wrap"><div id="ring" class="ring"><b id="percent">0%</b></div><div><strong id="doneCount">0 / 5</strong><small data-k="markedToday">marked today</small></div></div><div class="mini"><div><span data-k="consistency">7-day consistency</span><b id="consistency">0%</b></div><div><span data-k="streak">Current streak</span><b id="streak">0</b></div></div></article>
+          <article class="panel"><div class="panel-head"><div><span class="eyebrow" data-k="reflection">Daily reflection</span><h3 data-k="verseDay">Verse of the day</h3></div><span class="panel-icon">✦</span></div><blockquote class="arabic">إِنَّ مَعَ الْعُسْرِ يُسْرًا</blockquote><p data-k="easeVerse">Indeed, with hardship comes ease.</p><small>Quran 94:6</small></article>
+          <article class="panel"><div class="panel-head"><div><span class="eyebrow" data-k="continue">Continue</span><h3 data-k="quickActions">Quick actions</h3></div></div><div class="quick"><button data-go="quran"><span>☷</span><b data-k="readQuran">Read Quran</b></button><button data-go="qibla"><span>⌖</span><b data-k="findQibla">Find Qibla</b></button><button data-go="learn"><span>✦</span><b data-k="learnWudu">Learn Wudu</b></button><button data-go="tools"><span>◇</span><b data-k="moreTools">More tools</b></button></div></article>
+        </div>
+      </section>
+
+      <section id="page-calendar" class="page">
+        <div class="pagehero"><span class="eyebrow" data-k="planAhead">Plan ahead</span><h1 data-k="prayerCalendar">Prayer calendar</h1><p data-k="calendarIntro">View prayer times and your private worship history for every month.</p></div>
+        <article class="panel">
+          <div class="filters"><label><span data-k="month">Month</span><select id="month"></select></label><label><span data-k="year">Year</span><select id="year"></select></label><button id="loadMonth" class="primary" data-k="loadMonth">Load month</button></div>
+          <h3 data-k="monthlyTimes">Monthly prayer times</h3><div id="monthTable" class="tablewrap"><div class="empty" data-k="chooseMonth">Choose a month.</div></div>
+          <h3 class="history-title" data-k="prayerHistory">Prayer history</h3><div class="legend"><span><i class="lg prayed"></i><b data-k="prayed">Prayed</b></span><span><i class="lg skipped"></i><b data-k="skipped">Skipped</b></span><span><i class="lg blank"></i><b data-k="unmarked">Unmarked</b></span></div><div id="history" class="history"></div>
+        </article>
+      </section>
+
+      <section id="page-quran" class="page">
+        <div class="quran-layout">
+          <aside class="panel surahs"><div class="panel-head"><div><span class="eyebrow">114</span><h3 data-k="quran">Quran</h3></div></div><div class="search compact"><span>⌕</span><input id="surahSearch" data-ph="searchSurah" placeholder="Search surah"></div><div id="surahList" class="surah-list"></div></aside>
+          <article class="panel reader"><div class="reader-head"><div><span id="surahMeta" class="eyebrow" data-k="selectSurah">Select a surah</span><h2 id="surahTitle" data-k="quranReader">Quran Reader</h2></div><div><select id="translation"></select><button id="fontMinus" class="icon">A−</button><button id="fontPlus" class="icon">A+</button></div></div><div id="ayahs" class="ayahs"><div class="empty" data-k="chooseSurah">Choose a surah to begin.</div></div></article>
+        </div>
+      </section>
+
+      <section id="page-learn" class="page"><div class="pagehero"><span class="eyebrow" data-k="knowledge">Knowledge with care</span><h1 data-k="learnIslam">Learn Islam step by step.</h1><p data-k="learnIntro">Guides for purification, prayer, faith, fasting, character and daily life.</p></div><div id="lessonGrid" class="lesson-grid"></div></section>
+
+      <section id="page-duas" class="page"><div class="pagehero"><span class="eyebrow" data-k="rememberAllah">Remember Allah</span><h1 data-k="duasDhikr">Duas & Dhikr</h1><p data-k="duaIntro">Arabic, transliteration, meaning and source.</p></div><div class="search page-search"><span>⌕</span><input id="duaSearch" data-ph="searchDuas" placeholder="Search duas"></div><div id="duaGrid" class="dua-grid"></div></section>
+
+      <section id="page-qibla" class="page"><div class="two-col"><article class="panel qibla"><span class="eyebrow" data-k="directionPrayer">Direction of prayer</span><h1 data-k="qiblaCompass">Qibla compass</h1><p id="qiblaText" data-k="qiblaNeedLocation">Choose your location to calculate Qibla.</p><div class="compass"><span class="n">N</span><span class="e">E</span><span class="s">S</span><span class="w">W</span><span class="kaaba">🕋</span><i id="needle"></i><b></b></div><strong id="degrees">—°</strong><button id="liveCompass" class="primary" data-k="enableCompass">Enable live compass</button></article><aside class="panel"><span class="eyebrow" data-k="accuracy">Accuracy tips</span><h3 data-k="betterReading">For a better reading</h3><ul><li data-k="flatDevice">Keep your device flat.</li><li data-k="avoidMetal">Move away from metal objects.</li><li data-k="figureEight">Calibrate with a figure-eight movement.</li></ul></aside></div></section>
+
+      <section id="page-tasbih" class="page"><div class="two-col"><article class="panel tasbih"><span class="eyebrow" data-k="digitalDhikr">Digital dhikr counter</span><h1 data-k="tasbih">Tasbih</h1><select id="phrase"><option>SubhanAllah</option><option>Alhamdulillah</option><option>Allahu Akbar</option><option>La ilaha illa Allah</option><option>Astaghfirullah</option></select><div id="tasbihCount">0</div><button id="tap" class="tap"><b data-k="tap">Tap</b><small data-k="toCount">to count</small></button><div class="tas-actions"><button id="minus">−1</button><button id="reset" data-k="reset">Reset</button><button id="goal">33</button></div></article><aside class="panel"><span class="eyebrow" data-k="session">Your session</span><h3 data-k="dhikrProgress">Dhikr progress</h3><div class="summary"><span data-k="currentGoal">Current goal</span><b id="goalCopy">0 / 33</b></div><div class="summary"><span data-k="totalTaps">Total saved taps</span><b id="total">0</b></div></aside></div></section>
+
+      <section id="page-tools" class="page">
+        <div class="pagehero"><span class="eyebrow" data-k="dailyTools">Daily tools</span><h1 data-k="usefulTools">Useful Islamic tools.</h1><p data-k="toolsIntro">Private helpers for fasting, habits, charity and reflection.</p></div>
+        <div class="tools-grid">
+          <article class="panel"><span class="eyebrow" data-k="fasting">Fasting</span><h3 data-k="fastingTracker">Fasting tracker</h3><p data-k="fastingCopy">Mark today as a fasting day.</p><button id="fastBtn" class="secondary" data-k="markFasting">Mark fasting</button><b id="fastTotal" class="bigstat">0</b></article>
+          <article class="panel"><span class="eyebrow" data-k="charity">Charity</span><h3 data-k="zakatCalculator">Zakat calculator</h3><label><span data-k="eligibleWealth">Eligible wealth</span><input id="wealth" type="number" min="0" value="0"></label><div class="summary"><span data-k="estimate">Estimated 2.5%</span><b id="zakat">0.00</b></div><small data-k="zakatNote">Educational estimate only; ask a qualified scholar for complex assets.</small></article>
+          <article class="panel"><span class="eyebrow" data-k="habits">Habits</span><h3 data-k="dailyHabits">Daily good habits</h3><div id="habits" class="habit-list"></div></article>
+          <article class="panel"><span class="eyebrow" data-k="namesAllah">Names of Allah</span><h3 data-k="reflectName">Reflect on a name</h3><div id="nameArabic" class="name-arabic">الرَّحْمَنُ</div><b id="nameMeaning">The Most Merciful</b><button id="nextNameBtn" class="secondary" data-k="nextName">Next name</button></article>
+        </div>
+      </section>
+
+      <section id="page-settings" class="page"><div class="pagehero"><span class="eyebrow" data-k="personalise">Personalise Noor</span><h1 data-k="settings">Settings</h1><p data-k="settingsIntro">Your choices save automatically.</p></div><article class="panel settings">
+        <div><span><b data-k="language">Language</b><small data-k="languageDesc">Interface language</small></span><select id="settingsLanguage"></select></div>
+        <div><span><b data-k="location">Location</b><small id="settingsLocation">—</small></span><button id="changeLocation" class="secondary" data-k="change">Change</button></div>
+        <div><span><b data-k="theme">Theme</b><small data-k="themeDesc">Visual appearance</small></span><select id="theme"><option value="emerald">Emerald</option><option value="ivory">Ivory</option><option value="midnight">Midnight</option></select></div>
+        <div><span><b data-k="timeFormat">Time format</b><small>12 / 24</small></span><select id="clock"><option value="24">24</option><option value="12">12</option></select></div>
+        <div><span><b data-k="calculation">Calculation method</b><small data-k="calculationDesc">Choose the method used in your region</small></span><select id="method"></select></div>
+        <div><span><b data-k="asrMethod">Asr method</b><small data-k="asrDesc">Standard or Hanafi</small></span><select id="school"><option value="0">Standard</option><option value="1">Hanafi</option></select></div>
+        <div><span><b data-k="exportData">Export data</b><small data-k="exportDesc">Download your private records</small></span><button id="export" class="secondary" data-k="export">Export</button></div>
+        <div><span><b data-k="resetNoor">Reset Noor</b><small data-k="resetDesc">Delete browser data</small></span><button id="resetAll" class="danger" data-k="resetEverything">Reset everything</button></div>
+      </article></section>
+    </main>
+  </div>
+
+  <nav class="mobile-nav">
+    <button class="active" data-page="home"><span>⌂</span><b data-k="home">Home</b></button>
+    <button data-page="calendar"><span>▦</span><b data-k="calendar">Calendar</b></button>
+    <button data-page="quran"><span>☷</span><b data-k="quran">Quran</b></button>
+    <button data-page="learn"><span>✦</span><b data-k="learn">Learn</b></button>
+    <button data-page="tools"><span>◇</span><b data-k="tools">Tools</b></button>
+  </nav>
+</div>
+
+<div id="modal" class="modal hidden"><div id="modalCard" class="modal-card"></div></div>
+<div id="toast" class="toast"></div>
+<script src="assets/app.js?v=7"></script>
+</body>
+</html>
